@@ -1,1 +1,7 @@
-{}
+{
+    "env": {
+        "apiUrl": "https://reqres.in/api"
+    },
+    "defaultCommandTimeout": 5000,
+    "baseUrl": "https://reqres.in/api"
+}
