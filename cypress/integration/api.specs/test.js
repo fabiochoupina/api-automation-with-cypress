@@ -11,7 +11,7 @@ describe('Users', () => {
             .should('include', 'application/json');
     });
 
-    it('creates a user', () => {
+    it('creates a user - passing test', () => {
         cy.api( {
             method : 'POST',
             url : CREATE_USER_ENDPOINT,
@@ -23,6 +23,21 @@ describe('Users', () => {
         .then(function(response) {
             expect(response).to.have.property('status', 201)
             expect(response.body).to.have.property('name', "Fabio")
+        })
+    });
+    
+    it('creates a user - failing test', () => {
+        cy.api( {
+            method : 'POST',
+            url : CREATE_USER_ENDPOINT,
+            body : {
+                "name" : "Fabio",
+                "job" : "Test Engineer",
+            }
+        })
+        .then(function(response) {
+            expect(response).to.have.property('status', 201)
+            expect(response.body).to.have.property('name', "Fabio123")
         })
     });
 
